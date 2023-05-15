@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { ErrorBoundary } from '../container/ErrorBoundary'
+import { AuthContextProvider } from '../context/AuthContext'
 
 function AppProviders({ children }: { children: JSX.Element }) {
     const queryClient = new QueryClient()
@@ -8,7 +9,9 @@ function AppProviders({ children }: { children: JSX.Element }) {
         <ErrorBoundary>
             <QueryClientProvider client={queryClient}>
                 <BrowserRouter>
-                    {children}
+                    <AuthContextProvider>
+                        {children}
+                    </AuthContextProvider>
                 </BrowserRouter>
             </QueryClientProvider>
         </ErrorBoundary>
