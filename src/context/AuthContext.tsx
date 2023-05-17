@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useState } from 'react'
 import { AuthService } from '../services/AuthService'
+import { useNavigate } from 'react-router-dom';
 
 interface IAuthContext {
     authenticated: boolean,
@@ -12,6 +13,7 @@ const AuthContext = createContext<IAuthContext | null>(null);
 export const AuthContextProvider = ({ children }: { children: JSX.Element }) => {
     const [authenticated, setAuthenticated] = useState<boolean>(false)
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const navigate = useNavigate()
 
     const logIn = useCallback(async (data: Login.credentials) => {
         try {
@@ -19,6 +21,7 @@ export const AuthContextProvider = ({ children }: { children: JSX.Element }) => 
             await AuthService.login(data)
             setAuthenticated(true)
             setIsLoading(false)
+            navigate('/Home')
         } catch (error) {
             setAuthenticated(false)
             setIsLoading(false)
