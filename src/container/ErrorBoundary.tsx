@@ -15,9 +15,9 @@ export class ErrorBoundary extends Component<{ children: JSX.Element }, {
     render() {
         if (this.state.hasError) {
             return (
-                <div>
-                    <h1>Something went wrong</h1>
-                    <p>{this.state.error?.message}</p>
+                <div className="flex flex-col justify-center items-center h-screen bg-red-50">
+                    <h1 className="text-3xl font-bold text-red-600">Something went wrong</h1>
+                    <p className="mt-4 text-lg text-red-500">{this.state.error?.message}</p>
                 </div>
             )
         }
