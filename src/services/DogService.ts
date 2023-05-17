@@ -1,4 +1,4 @@
-import { QueryObserverResult, useMutation, useQuery } from "react-query";
+import { QueryObserverResult, useQuery } from "react-query";
 import client from "../utils/http";
 
 export class DogService {

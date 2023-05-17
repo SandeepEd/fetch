@@ -2,7 +2,7 @@ import { DependencyList, useEffect, useState } from "react";
 import { QueryObserverResult } from "react-query";
 
 export function useAsyncEffect<I, O>(
-    callBack?: (props: I) => QueryObserverResult<O, any>,
+    callBack?: (props: I) => QueryObserverResult<O>,
     propQuery?: I,
     dependencies?: DependencyList,
 ) {
