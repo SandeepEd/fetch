@@ -23,16 +23,23 @@ const List: React.FC<IListProps> = ({ query }) => {
     return <>
         <div className='grid grid-cols-5 mt-2 p-4 gap-4 w-screen'>
             {results?.map((dog: Dogs.Base) => (
-                <div className='flex flex-col border-2 rounded-lg border-gray-300' key={dog.id}>
-                    <img
-                        className='h-40 min-w-full object-cover rounded-t-lg'
-                        src={dog.img}
-                        alt={dog.name} />
-                    <p className='text-left my-1 pl-2 font-medium'>{dog.name}</p>
-                </div>
+                <Card key={dog.id} dog={dog} />
             ))}
         </div>
     </>
+}
+
+const Card = ({ dog }: { dog: Dogs.Base }) => {
+    return (
+        <div className='flex flex-col border-2 rounded-lg border-gray-300'>
+            <img
+
+                className='h-40 min-w-full object-cover rounded-t-lg'
+                src={dog.img}
+                alt={dog.name} />
+            <p className='text-left my-1 pl-2 font-medium'>{dog.name}</p>
+        </div>
+    )
 }
 
 export default List
