@@ -2,7 +2,7 @@ interface ISearchProps {
     query: string;
     handleSearch: (query: string) => void;
 }
-const DogSearch: React.FC<ISearchProps> = ({
+const Search: React.FC<ISearchProps> = ({
     query,
     handleSearch
 }) => {
@@ -20,4 +20,4 @@ const DogSearch: React.FC<ISearchProps> = ({
     );
 };
 
-export default DogSearch;
+export default Search;
