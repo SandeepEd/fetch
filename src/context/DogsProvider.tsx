@@ -13,6 +13,7 @@ export const DogsProvider = ({ children }: { children: JSX.Element }) => {
     </DogsDataContext.Provider>
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useDogsData = () => {
     const context = useContext(DogsDataContext);
     if (!context) {

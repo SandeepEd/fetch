@@ -2,7 +2,7 @@ import { useSearch } from '../../services/DogService'
 import List from './List';
 import FilterComponent from './Filter';
 import { useDogsData } from '../../context/DogsProvider';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Pagination from './Pagination';
 
 function FetchYourDog() {
