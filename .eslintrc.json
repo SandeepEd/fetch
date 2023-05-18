@@ -1,19 +1,27 @@
 {
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "plugins": [
     "import",
-    "import-quotes"
+    "import-quotes",
+    "jsx-a11y",
+    "react-hooks",
+    "react"
   ],
-  "parserOptions": {
-    "sourceType": "module"
-  },
   "env": {
+    "browser": true,
+    "es2017": true,
     "node": true,
-    "es2017": true
+    "jquery": true
   },
   "reportUnusedDisableDirectives": true,
+  "ignorePatterns": [
+    "*.min.js",
+    "*.chunk.js"
+  ],
   "rules": {
     "arrow-body-style": 2,
     "array-bracket-newline": [
@@ -32,10 +40,6 @@
     "block-spacing": [
       2,
       "always"
-    ],
-    "comma-dangle": [
-      2,
-      "always-multiline"
     ],
     "comma-spacing": 2,
     "comma-style": 2,
@@ -103,7 +107,7 @@
     "new-parens": 2,
     "no-array-constructor": 2,
     "no-caller": 2,
-    "no-console": 2,
+    "no-console": 1,
     "no-div-regex": 2,
     "no-else-return": 2,
     "no-empty-function": [
@@ -117,7 +121,13 @@
     "no-eval": 2,
     "no-extra-bind": 2,
     "no-extra-label": 2,
-    "no-extra-parens": 2,
+    "no-extra-parens": [
+      2,
+      "all",
+      {
+        "nestedBinaryExpressions": false
+      }
+    ],
     "no-fallthrough": 0,
     "no-floating-decimal": 2,
     "no-implicit-coercion": [
@@ -143,12 +153,6 @@
     "no-new-wrappers": 2,
     "no-path-concat": 2,
     "no-plusplus": 2,
-    "no-shadow": [
-      2,
-      {
-        "hoist": "all"
-      }
-    ],
     "no-throw-literal": 2,
     "no-trailing-spaces": 2,
     "no-undef-init": 2,
@@ -182,16 +186,6 @@
       "never"
     ],
     "operator-assignment": 2,
-    "operator-linebreak": [
-      2,
-      "after",
-      {
-        "overrides": {
-          "?": "before",
-          ":": "before"
-        }
-      }
-    ],
     "prefer-arrow-callback": 2,
     "prefer-const": 2,
     "prefer-destructuring": 2,
@@ -205,6 +199,23 @@
         "numbers": true
       }
     ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/destructuring-assignment": 2,
+    "react/jsx-equals-spacing": 2,
+    "react/jsx-indent": [
+      2,
+      2,
+      {
+        "indentLogicalExpressions": true
+      }
+    ],
+    "react/jsx-indent-props": [
+      2,
+      2
+    ],
+    "react/jsx-tag-spacing": 2,
+    "react/self-closing-comp": 2,
     "require-await": 2,
     "rest-spread-spacing": 2,
     "space-before-function-paren": [
@@ -265,14 +276,14 @@
         "*.tsx"
       ],
       "parser": "@typescript-eslint/parser",
-      "plugins": [
-        "@typescript-eslint"
-      ],
       "extends": [
         "eslint:recommended", // extends key not inherited from root
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "plugins": [
+        "@typescript-eslint"
       ],
       "parserOptions": {
         "project": "./tsconfig.json"
@@ -298,13 +309,14 @@
             }
           }
         ],
+        "@typescript-eslint/restrict-template-expressions": 2,
         "@typescript-eslint/camelcase": 0,
         "@typescript-eslint/consistent-type-definitions": 2,
         "@typescript-eslint/explicit-function-return-type": 0,
         "@typescript-eslint/explicit-member-accessibility": [
           2,
           {
-            "accessibility": "explicit"
+            "accessibility": "no-public"
           }
         ],
         "func-call-spacing": 0,
@@ -314,23 +326,7 @@
           2,
           2,
           {
-            "SwitchCase": 1,
-            "offsetTernaryExpressions": true
-          }
-        ],
-        "@typescript-eslint/naming-convention": [
-          2,
-          {
-            "selector": "interface",
-            "format": [
-              "PascalCase"
-            ]
-          }
-        ],
-        "@typescript-eslint/no-misused-promises": [
-          2,
-          {
-            "checksVoidReturn": false
+            "SwitchCase": 1
           }
         ],
         "@typescript-eslint/member-delimiter-style": [
@@ -339,6 +335,12 @@
             "singleline": {
               "delimiter": "comma"
             }
+          }
+        ],
+        "@typescript-eslint/no-misused-promises": [
+          2,
+          {
+            "checksVoidReturn": false
           }
         ],
         "no-empty-function": 0,
@@ -352,7 +354,13 @@
         ],
         "@typescript-eslint/no-explicit-any": 0,
         "no-extra-parens": 0,
-        "@typescript-eslint/no-extra-parens": 2,
+        "@typescript-eslint/no-extra-parens": [
+          2,
+          "all",
+          {
+            "nestedBinaryExpressions": false
+          }
+        ],
         "no-extra-semi": 0,
         "@typescript-eslint/no-extra-semi": 2,
         "no-unused-vars": 0,
@@ -362,6 +370,7 @@
             "varsIgnorePattern": "^_"
           }
         ],
+        "@typescript-eslint/no-non-null-assertion": 0,
         "@typescript-eslint/no-var-requires": 2,
         "@typescript-eslint/prefer-for-of": 2,
         "@typescript-eslint/prefer-function-type": 2,
@@ -388,10 +397,20 @@
             "named": "never"
           }
         ],
-        "@typescript-eslint/triple-slash-reference": 0,
         "@typescript-eslint/type-annotation-spacing": 2,
         "@typescript-eslint/unbound-method": 0,
-        "@typescript-eslint/unified-signatures": 2
+        "@typescript-eslint/unified-signatures": 2,
+        "@typescript-eslint/explicit-module-boundary-types": 0,
+        "@typescript-eslint/no-unsafe-argument": 0
+      }
+    },
+    {
+      "files": [
+        "*.tsx"
+      ],
+      "rules": {
+        "@typescript-eslint/no-unsafe-member-access": 0,
+        "@typescript-eslint/no-unsafe-assignment": 0
       }
     }
   ]
