@@ -2,7 +2,7 @@ import { useSearch } from '../../services/DogService'
 import List from './List';
 import FilterComponent from './Filter';
 import { useDogsData } from '../../context/DogsProvider';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Pagination from './Pagination';
 
 function FetchYourDog() {
@@ -14,17 +14,18 @@ function FetchYourDog() {
     })
 
     const handleFilterChange = (newFilter: Dogs.ISearchParams) => {
-        console.log(`newFilter :::`, newFilter)
         setFilter((prevFil) => ({ ...prevFil, ...newFilter }))
     }
 
     const { error, status, data: results, isLoading } = queryResult || {};
 
-    // console.log(`queryResult :::`, queryResult, results)
-
     if (error || status === 'error') {
         throw new Error('Error Occurred While Searching for Dogs, Please Try again later!')
     }
+
+    // useEffect(() => {
+    //     handleFilterChange({ from: 0 })
+    // }, [results?.total])
 
     return (
         <>
@@ -38,9 +39,13 @@ function FetchYourDog() {
                     results?.resultIds ?
                         <List query={results?.resultIds} /> : <div>no data</div>
             }
-            <Pagination
-                totalCount={results?.total || 0}
-            />
+            {(status === 'loading' || isLoading) ? <div>Loading...</div> :
+                <Pagination
+                    currentPage={filter.from ? filter.from / 10 : 0}
+                    totalCount={results?.total || 0}
+                    handlePageChange={handleFilterChange}
+                />
+            }
         </>
     )
 }

@@ -23,9 +23,9 @@ const FilterComponent: React.FC<IFilterComponentProps> = ({ breeds, handleFilter
                         value={filter.breeds}
                         onChange={(e) => handleFilter(
                             {
-                                breeds: filter.breeds ?
+                                breeds: e.target.value ?
                                     [e.target.value] :
-                                    [e.target.value]
+                                    undefined
                             })}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     >

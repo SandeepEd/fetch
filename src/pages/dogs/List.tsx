@@ -32,7 +32,7 @@ const List: React.FC<IListProps> = ({ query }) => {
 
 const Card = ({ dog }: { dog: Dogs.Base }) => {
     return (
-        <div className='flex flex-col border-gray-300 duration-300 hover:-translate-y-4 hover:border-4 hover:border-amber-700 hover:rounded-md hover:p-2'>
+        <div className='flex flex-col h-60 border-gray-300 duration-500 hover:-translate-y-4 hover:border-4 hover:border-gray-700 hover:rounded-md hover:p-2'>
             <img
                 className='h-40 max-w-full object-cover rounded-t-lg'
                 src={dog.img}

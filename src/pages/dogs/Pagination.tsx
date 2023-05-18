@@ -1,19 +1,22 @@
+// import { useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 
 interface IPaginationProps {
     totalCount: number;
-    // gotoPage: (selected: number) => void;
+    handlePageChange: (newFilter: Dogs.ISearchParams) => void;
+    currentPage: number;
 }
 export const Pagination: React.FC<IPaginationProps> = ({
     totalCount,
-    // gotoPage
+    handlePageChange,
+    currentPage = 0
 }) => {
 
     const pageCount = Math.ceil(totalCount / 10);
     const gotoPage = (selected: number) => {
-        console.log(`selected :::`, selected)
+        handlePageChange({ from: selected * 10 })
     }
-    console.log(`pageCount :::`, pageCount)
+
     return (
         <div className='w-screen flex align-middle justify-center mb-10'>
             {pageCount > 0 &&
@@ -29,11 +32,11 @@ export const Pagination: React.FC<IPaginationProps> = ({
                     nextLinkClassName="page-link"
                     breakClassName="page-item"
                     breakLinkClassName="page-link"
+                    forcePage={currentPage}
                     breakLabel="..."
                     previousLabel={`<`}
                     nextLabel={`>`}
                     onPageChange={({ selected }) => gotoPage(selected)}
-                    // forcePage={pageIndex}
                     pageRangeDisplayed={5}
                     marginPagesDisplayed={2}
                     pageCount={pageCount}
