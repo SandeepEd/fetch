@@ -7,10 +7,6 @@ interface IFilterComponentProps {
 }
 const FilterComponent: React.FC<IFilterComponentProps> = ({ breeds, handleFilter, filter }) => {
 
-    const submitFilter = (data: any) => {
-        handleFilter(data);
-    };
-
     return (
         <div className="w-screen flex flex-row justify-center items-center pt-4">
             <div className="flex flex-col md:flex-row">
