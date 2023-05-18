@@ -3,6 +3,7 @@ import List from './List';
 import FilterComponent from './Filter';
 import { useDogsData } from '../../context/DogsProvider';
 import { useState } from 'react';
+import Pagination from './Pagination';
 
 function FetchYourDog() {
     const [filter, setFilter] = useState<Dogs.ISearchParams>({})
@@ -37,6 +38,9 @@ function FetchYourDog() {
                     results?.resultIds ?
                         <List query={results?.resultIds} /> : <div>no data</div>
             }
+            <Pagination
+                totalCount={results?.total || 0}
+            />
         </>
     )
 }
