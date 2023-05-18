@@ -12,7 +12,7 @@ const FilterComponent: React.FC<IFilterComponentProps> = ({ breeds, handleFilter
     };
 
     return (
-        <div className="w-screen flex flex-row justify-center items-center p-5">
+        <div className="w-screen flex flex-row justify-center items-center pt-4">
             <div className="flex flex-col md:flex-row">
                 <div className="mb-3 md:mb-0 md:mr-3">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="breed">
@@ -48,7 +48,7 @@ const FilterComponent: React.FC<IFilterComponentProps> = ({ breeds, handleFilter
                             handleFilter(
                                 { ageMin: e.currentTarget.value ? Number(e.currentTarget.value) : undefined }
                             )}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline"
                     />
                 </div>
 
@@ -65,7 +65,7 @@ const FilterComponent: React.FC<IFilterComponentProps> = ({ breeds, handleFilter
                                 { ageMax: e.currentTarget.value ? Number(e.currentTarget.value) : undefined }
                             )
                         }
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline"
                     />
                 </div>
 
@@ -82,7 +82,7 @@ const FilterComponent: React.FC<IFilterComponentProps> = ({ breeds, handleFilter
                                 { zipCodes: e.currentTarget.value ? [Number(e.currentTarget.value)] : undefined }
                             )
                         }
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline"
                     />
                 </div>
             </div>
