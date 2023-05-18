@@ -9,17 +9,17 @@ export default function AuthenticatedApp() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen w-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign in to your account
           </h2>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          <div className=" shadow-sm -space-y-px">
+        <form className="mt-6 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <div>
             <div>
-              <label htmlFor="name" className="block mb-1 text-sm text-left">Your Name</label>
+              <label htmlFor="name" className="block mb-1 text-sm text-left">Name</label>
               <input
                 {...register(`name`, { required: true })}
                 id="name"
@@ -33,7 +33,7 @@ export default function AuthenticatedApp() {
               />
             </div>
             <div>
-              <label htmlFor="email" className="block mb-1 text-sm text-left mt-1">Your Email</label>
+              <label htmlFor="email" className="block mb-1 text-sm text-left mt-1">Email</label>
               <input
                 {...register(`email`, { required: true })}
                 id="email-address"
