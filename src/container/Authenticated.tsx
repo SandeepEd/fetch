@@ -1,10 +1,18 @@
-import React from 'react'
-
+import { DogsProvider } from '../context/DogsProvider';
+import FetchYourDog from '../pages/dogs/FetchYourDog';
+import { useGetBreeds } from '../services/DogService';
 
 function Authenticated() {
+  const breeds = useGetBreeds().data;
+  console.log(breeds);
+
   return (
-    <div>Authenticated</div>
-  )
+    <>
+      <DogsProvider>
+        <FetchYourDog />
+      </DogsProvider>
+    </>
+  );
 }
 
-export default Authenticated
+export default Authenticated;
