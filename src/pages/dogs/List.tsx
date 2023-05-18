@@ -7,13 +7,10 @@ interface IListProps {
 
 const List: React.FC<IListProps> = ({ query }) => {
 
-    console.log(`query for dogs search :::`, query)
 
     const queryResult = useGetDogs(query);
 
     const { error, status, data: results, isLoading } = queryResult || {};
-
-    console.log(`dogsResult :::`, queryResult, results)
 
     if (status === 'loading' || isLoading) {
         return <div>Loading...</div>
@@ -35,14 +32,14 @@ const List: React.FC<IListProps> = ({ query }) => {
 
 const Card = ({ dog }: { dog: Dogs.Base }) => {
     return (
-        <div className='flex flex-col border-gray-300'>
+        <div className='flex flex-col border-gray-300 duration-300 hover:-translate-y-4 hover:border-4 hover:border-amber-700 hover:rounded-md hover:p-2'>
             <img
-                className='h-40 min-w-full object-cover rounded-t-lg'
+                className='h-40 max-w-full object-cover rounded-t-lg'
                 src={dog.img}
                 alt={dog.name} />
             <p className='text-left mt-1 font-medium'>Name: {dog.name}({dog.age})</p>
-            <p className='text-left font-sans'>Breed: {dog.breed}</p>
-            <p className='text-left font-sans'>ZipCode: {dog.zip_code}</p>
+            <p className='text-left text-xs'>Breed: {dog.breed}</p>
+            <p className='text-left text-xs'>ZipCode: {dog.zip_code}</p>
         </div>
     )
 }
