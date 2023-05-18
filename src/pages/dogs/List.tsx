@@ -15,8 +15,7 @@ const List: React.FC<IListProps> = ({ query }) => {
     return <div>Loading...</div>;
   }
 
-  if (status === `error`) {
-    console.log(`error :::`, error);
+  if (status === `error` || error) {
     return <div>Error Occurred</div>;
   }
 
@@ -29,7 +28,8 @@ const List: React.FC<IListProps> = ({ query }) => {
 };
 
 const Card = ({ dog }: { dog: Dogs.Base }) =>
-  <div className='flex flex-col h-60 border-gray-300 duration-500 hover:-translate-y-4 hover:border-4 hover:border-gray-700 hover:rounded-md hover:p-2'>
+  <div className='flex flex-col h-60 border-gray-300 duration-500 hover:-translate-y-4
+  hover:border-4 hover:border-gray-700 hover:rounded-md hover:p-2'>
     <img
       className='h-40 max-w-full object-cover rounded-t-lg'
       src={dog.img}

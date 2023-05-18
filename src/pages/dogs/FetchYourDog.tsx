@@ -39,8 +39,10 @@ function FetchYourDog() {
           results?.resultIds ?
             <List query={results?.resultIds} /> : <div>no data</div>
       }
-      {status === `loading` || isLoading ? <div>Loading...</div> :
-      <Pagination
+      {status === `loading` || isLoading
+        ? <div>Loading...</div>
+        :
+        <Pagination
           currentPage={filter.from ? filter.from / 10 : 0}
           totalCount={results?.total || 0}
           handlePageChange={handleFilterChange}

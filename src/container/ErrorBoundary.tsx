@@ -13,14 +13,16 @@ export class ErrorBoundary extends Component<{ children: JSX.Element }, {
   }
 
   render() {
-    if (this.state.hasError) {
+    const { error, hasError } = this.state;
+    const { children } = this.props;
+    if (hasError) {
       return (
         <div className="flex flex-col justify-center items-center h-screen bg-red-50">
           <h1 className="text-3xl font-bold text-red-600">Something went wrong</h1>
-          <p className="mt-4 text-lg text-red-500">{this.state.error?.message}</p>
+          <p className="mt-4 text-lg text-red-500">{error?.message}</p>
         </div>
       );
     }
-    return this.props.children;
+    return children;
   }
 }

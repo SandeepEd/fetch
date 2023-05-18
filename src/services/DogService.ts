@@ -1,19 +1,21 @@
 import { QueryObserverResult, useQuery } from 'react-query';
+import { AxiosResponse } from 'axios';
 import client from '../utils/http';
 
 export class DogService {
-  static getBreeds() {
+  static getBreeds(): Promise<AxiosResponse<string[]>> {
     return client.get(`/dogs/breeds`);
   }
 
-  static search(params?: Dogs.ISearchParams, url?: string) {
+  static search(params?: Dogs.ISearchParams, url?: string):
+  Promise<AxiosResponse<Dogs.ISearchResult>> {
     if (url) {
       return client.get(url, { params });
     }
     return client.get(`/dogs/search`, { params });
   }
 
-  static getDogs(ids: number[]) {
+  static getDogs(ids: number[]): Promise<AxiosResponse<Dogs.Base[]>> {
     return client.post(`/dogs`, ids);
   }
 

@@ -22,7 +22,8 @@ const FilterComponent: React.FC<IFilterComponentProps> = ({ breeds, handleFilter
                 undefined
             }
           )}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+          leading-tight focus:outline-none focus:shadow-outline"
         >
           <option value="">Select a Breed</option>
           {breeds?.map((breed, index) =>
@@ -42,7 +43,8 @@ const FilterComponent: React.FC<IFilterComponentProps> = ({ breeds, handleFilter
             handleFilter(
               { ageMin: e.currentTarget.value ? Number(e.currentTarget.value) : undefined }
             )}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+          leading-tight focus:shadow-outline"
         />
       </div>
 
@@ -59,7 +61,8 @@ const FilterComponent: React.FC<IFilterComponentProps> = ({ breeds, handleFilter
               { ageMax: e.currentTarget.value ? Number(e.currentTarget.value) : undefined }
             )
           }
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+          leading-tight focus:shadow-outline"
         />
       </div>
 
@@ -76,7 +79,8 @@ const FilterComponent: React.FC<IFilterComponentProps> = ({ breeds, handleFilter
               { zipCodes: e.currentTarget.value ? [ Number(e.currentTarget.value) ] : undefined }
             )
           }
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+          leading-tight focus:shadow-outline"
         />
       </div>
     </div>
