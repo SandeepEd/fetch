@@ -1,3 +1,4 @@
+import { DogsProvider } from "../context/DogsProvider";
 import FetchYourDog from "../pages/dogs/FetchYourDog";
 import { useGetBreeds } from "../services/DogService"
 
@@ -8,7 +9,9 @@ function Authenticated() {
 
   return (
     <>
-      <FetchYourDog />
+      <DogsProvider>
+        <FetchYourDog />
+      </DogsProvider>
     </>
   )
 }
