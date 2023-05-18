@@ -6,8 +6,11 @@ export class DogService {
         return client.get('/dogs/breeds')
     }
 
-    static search() {
-        return client.get('/dogs/search')
+    static search(params?: Dogs.ISearchParams, url?: string) {
+        if (url) {
+            return client.get(url, { params })
+        }
+        return client.get('/dogs/search', { params })
     }
 
     static getDogs(ids: number[]) {
@@ -17,23 +20,23 @@ export class DogService {
 
 }
 
-export function useGetBreeds(): QueryObserverResult<Dogs.Base> {
+export function useGetBreeds(): QueryObserverResult<string[]> {
     return useQuery({
         queryKey: 'breeds',
         queryFn: () => DogService.getBreeds().then(res => res.data)
     })
 }
 
-export function useSearch(): QueryObserverResult<Dogs.ISearch> {
+export function useSearch(params?: Dogs.ISearchParams): QueryObserverResult<Dogs.ISearchResult> {
     return useQuery({
-        queryKey: 'search',
-        queryFn: () => DogService.search().then(res => res.data),
+        queryKey: ['search', params],
+        queryFn: () => DogService.search(params).then(res => res.data),
     })
 }
 
 export function useGetDogs(ids: number[]): QueryObserverResult<Dogs.Base[]> {
     return useQuery({
-        queryKey: ['dogs'],
-        queryFn: () => DogService.getDogs(ids).then(res => res.data)
+        queryKey: ['dogs', ids],
+        queryFn: () => DogService.getDogs(ids).then(res => res.data),
     })
 }
