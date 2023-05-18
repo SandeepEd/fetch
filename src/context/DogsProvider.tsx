@@ -1,23 +1,23 @@
-import { createContext, useContext } from "react";
-import { useGetBreeds } from "../services/DogService";
+import { createContext, useContext } from 'react';
+import { useGetBreeds } from '../services/DogService';
 
 interface IDogsDataContext {
-    breeds?: string[]
+  breeds?: string[];
 }
 const DogsDataContext = createContext<IDogsDataContext | null>(null);
 
 export const DogsProvider = ({ children }: { children: JSX.Element }) => {
-    const breeds = useGetBreeds().data;
-    return <DogsDataContext.Provider value={{ breeds }}>
-        {children}
-    </DogsDataContext.Provider>
-}
+  const breeds = useGetBreeds().data;
+  return <DogsDataContext.Provider value={{ breeds }}>
+    {children}
+  </DogsDataContext.Provider>;
+};
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useDogsData = () => {
-    const context = useContext(DogsDataContext);
-    if (!context) {
-        throw new Error('useDogsData must be used within an DogsProvider')
-    }
-    return context;
-}
+  const context = useContext(DogsDataContext);
+  if (!context) {
+    throw new Error(`useDogsData must be used within an DogsProvider`);
+  }
+  return context;
+};

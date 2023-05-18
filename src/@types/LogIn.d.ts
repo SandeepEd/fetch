@@ -1,6 +1,6 @@
 declare namespace Login {
-    interface credentials {
-        name: string;
-        email: string;
-    }
+  interface credentials {
+    name: string;
+    email: string;
+  }
 }
