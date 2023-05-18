@@ -8,10 +8,21 @@ declare namespace Dogs {
         breed: string
     }
 
-    interface ISearch {
+    interface ISearchResult {
         resultIds: number[],
         total: number,
         next: string | null,
         previous: string | null
+    }
+
+    interface ISearchParams {
+        breeds?: string[],
+        zipCodes?: number[],
+        ageMin?: number,
+        ageMax?: number,
+        size?: number,
+        from?: number,
+        sort?: string,
+        size?: number,
     }
 }
